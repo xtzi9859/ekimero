@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>発車メロディー</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="./main.js"></script>
+    <link rel="stylesheet" href="./main.css">
+    <link rel="shortcut-icon" type="image/x-icon" href="/favicon.ico">
+</head>
+
+<body>
+    <p id="menu"><a href="/index.html">TOP</a> &gt;&gt; 発車メロディー</p>
+    <h1>発車メロディー</h1>
+    <audio id="melody" src=""></audio>
+    <audio id="door" src=""></audio>
+    <div id="flex">
+        <div id="left">
+            <div id="twoButton">
+                <p class="melbtn">
+                    <button id="on">ON</button>
+                </p>
+                <p class="melbtn">
+                    <button id="off">OFF</button>
+                </p>
+            </div>
+        </div>
+        <div id="right">
+            <a id="playOnce"></a>
+            <button id="forceStop">強制停止</button>
+        </div>
+    </div>
+    <p><button id="selectJRSH">JR-SH</button></p>
+    <p>
+        <select id="melodyFile">
+            <option value="nonSelected" selected disabled>発車メロディーを選択</option>
+            <option value="./melody/フォルティッシモ.aac">フォルティッシモ (仙台駅)</option>
+            <option value="./melody/青葉城恋唄_在来線.aac">青葉城恋唄 (仙台駅)</option>
+            <option value="./melody/八木節.aac">八木節 (桐生駅)</option>
+            <option value="./melody/渡良瀬橋A.aac">渡良瀬橋A (足利駅)</option>
+            <option value="./melody/渡良瀬橋B.aac">渡良瀬橋B (足利駅)</option>
+            <option value="./melody/AIZUその名の情熱.aac">AIZUその名の情熱 (会津若松駅)</option>
+            <option value="./melody/信濃の国.aac">信濃の国 (長野駅)</option>
+            <option value="./melody/川越ジャングル.aac">川越ジャングル (川越駅)</option>
+            <option value="./melody/せせらぎ_鐘強調.aac">せせらぎ</option>
+            <option value="./melody/春.aac">春</option>
+            <option value="./melody/Verde Rayo.aac">Verde Rayo</option>
+            <option value="./melody/Verde Rayo_V2.aac">Verde Rayo V2</option>
+            <option value="./melody/Verde Rayo_エンドレス.aac">Verde Rayo エンドレス</option>
+            <option value="./melody/CieloEstrellado.aac">Cielo Estrellado</option>
+            <option value="./melody/Gota del Vient.aac">Gota del Vient</option>
+            <option value="./melody/Gota del Vient_エンドレス.aac">Gota del Vient エンドレス</option>
+            <option value="./melody/sunrise.aac">Sunrise</option>
+            <option value="./melody/Twilight.aac">Twilight</option>
+            <option value="./melody/野田B.aac">野田B (東武伊勢崎線 上り)</option>
+            <option value="./melody/野田C.aac">野田C (東武伊勢崎線 下り)</option>
+            <option value="JR-SH" disabled >JR-SH</option>
+            <option value="./melody/JR-SH/JR-SH1-1.aac">JR-SH1-1</option>
+            <option value="./melody/JR-SH/JR-SH1-2.aac">JR-SH1-2</option>
+            <option value="./melody/JR-SH/JR-SH1-3.aac">JR-SH1-3</option>
+            <option value="./melody/JR-SH/JR-SH1-1_matsumoto.aac">JR-SH1-1(松本駅)</option>
+            <option value="./melody/JR-SH/JR-SH2-1.aac">JR-SH2-1</option>
+        </select>
+        <button id="listenMelody">試聴🎶</button>
+    </p>
+
+    <p id="door">
+        <select id="doorFile">
+            <option value="nonSelected" selected disabled>戸閉放送</option>
+            <option value="no">なし</option>
+            <option value="ATOS">ATOS 標準</option>
+            <option value="ATOS_line">ATOS 路線名付加</option>
+            <option value="COSMOS_elder">COSMOS 旧型</option>
+            <option value="KEIYO_PRC">京葉PRC (上野おばさん)</option>
+            <option value="UENO_MATSUMOTO">上野型 (松本駅)</option>
+            <option value="TOBU_new">東武鉄道</option>
+            <option value="SENSEKI">仙石型</option>
+            <option value="TOKAIDO">東海道型</option>
+        </select>
+        <button id="listenDoor">試聴🎶</button>
+    </p>
+    <p id="trackNumSelect">
+        <select id="trackNum">
+            <option value="nonSelected" selected disabled>発着番線</option>
+        </select>
+    </p>
+    <p id="helpLink">
+        <a href="./help.html">遊び方</a>
+    </p>
+</body>
+
+</html>
