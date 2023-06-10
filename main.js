@@ -159,7 +159,7 @@ $(function(){
     $('#volume').on('input', function(){
         let slider = $(this).val();
         volume = slider / 20;
-        $('#volumeValue').val(volume);
+        $('#volumeValue').val(volume * 100);
         melody.volume = volume;
         door.volume = volume;
         repeat.volume = volume;
