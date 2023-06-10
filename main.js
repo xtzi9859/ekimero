@@ -6,7 +6,8 @@ $(function(){
     // 初期化
     var door = $('#door').get(0);
     var melody = $('#melody').get(0);
-    var repeat = $('#repeat').get(0);
+    var sw1 = $('#sw1').get(0);
+    var sw2 = $('#sw2').get(0);
     var volume = 1.0;
     var doorPlaying = false;
     var doorPath = 'nonSelected';
@@ -16,7 +17,6 @@ $(function(){
     $('#melodyFile').change(function(){
         melodyPath = $('#melodyFile').val();
         $('#melody').attr('src', melodyPath);
-        $('#repeat').attr('src', melodyPath)
     });
     // 放送選択,発着番線のリスト切り替え
     $('#doorFile').change(function(){
@@ -111,27 +111,28 @@ $(function(){
     $('#selectJRSH').click(function(){$('#melodyFile').val('JR-SH')})
     // ON/OFF 0.5秒間を置いてリピート
     $('#on').click(function(){
-        repeat.play();
-    });
+        sw2.play();
+        setTimeout(function(){melody.play();},500);
+        $('#melody').on('ended', function(){const re = setTimeout(function(){melody.play();},500);})});
     // 0.5秒後に放送
     $('#off').click(function(){
-        repeat.pause();
-        repeat.currentTime = 0;
-        setTimeout(function(){door.play()}, 500);
+        sw2.play();
+        setTimeout(function(){melody.pause();},500);
+        setTimeout(function(){melody.currentTime = 0;}, 500);
+        setTimeout(function(){door.play();}, 1200);
+        clearTimeout(re);
     });
     // 一回鳴らす
     // 2.5秒後に音量ダウン
     // 3.0秒後に放送開始
     // 放送終了後0.5秒で音量戻す
     $('#playOnce').click(function(){
-        melody.volume = 1.0
-        melody.play();
+        sw1.play();
+        setTimeout(function(){melody.play();},500);
         if(doorPath!='no'&&doorPath!='nonSelected'){
             doorPlaying = true;
             setTimeout(function(){melody.volume = (volume * 0.4);}, 2500);
-            setTimeout(function(){
-                door.play();
-            }, 3000);
+            setTimeout(function(){door.play();}, 3000);
         }
         // 放送が流れていればリピート
         $('#door').on('ended', function(){
@@ -147,10 +148,8 @@ $(function(){
     $('#forceStop').click(function(){
         melody.pause();
         door.pause();
-        repeat.pause();
         melody.currentTime = 0;
         door.currentTime = 0;
-        repeat.currentTime = 0;
         melody.volume = volume;
         doorPlaying = false;
     });
@@ -161,6 +160,5 @@ $(function(){
         $('#volumeValue').val(slider * 5);
         melody.volume = volume;
         door.volume = volume;
-        repeat.volume = volume;
     })
 });
