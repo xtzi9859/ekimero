@@ -73,6 +73,32 @@
             <option value="./melody/JR-SH/JR-SH1-3.aac">JR-SH1-3</option>
             <option value="./melody/JR-SH/JR-SH1-1_matsumoto.aac">JR-SH1-1(松本駅)</option>
             <option value="./melody/JR-SH/JR-SH2-1.aac">JR-SH2-1</option>
+            <option value="./melody/JR-SH/JR-SH2-2.aac">JR-SH2-2</option>
+            <option value="./melody/JR-SH/JR-SH2-3.aac">JR-SH2-3</option>
+            <option value="./melody/JR-SH/JR-SH3-1.aac">JR-SH3-1</option>
+            <option value="./melody/JR-SH/JR-SH3-2.aac">JR-SH3-2</option>
+            <option value="./melody/JR-SH/JR-SH3-3.aac">JR-SH3-3</option>
+            <option value="./melody/JR-SH/JR-SH3-3_tokyo.aac">JR-SH3-3 (東京駅)</option>
+            <option value="./melody/JR-SH/JR-SH4-1.aac">JR-SH4-1</option>
+            <option value="./melody/JR-SH/JR-SH4-2.aac">JR-SH4-2</option>
+            <option value="./melody/JR-SH/JR-SH4-3.aac">JR-SH4-3</option>
+            <option value="./melody/JR-SH/JR-SH4-1_bass.aac">JR-SH4-1 (低音)</option>
+            <option value="./melody/JR-SH/JR-SH5-1.aac">JR-SH5-1</option>
+            <option value="./melody/JR-SH/JR-SH5-2.aac">JR-SH5-2</option>
+            <option value="./melody/JR-SH/JR-SH5-3.aac">JR-SH5-3</option>
+            <option value="./melody/JR-SH/JR-SH5-1_tokyo.aac">JR-SH5-1 (東京駅)</option>
+            <option value="./melody/JR-SH/JR-SH6-1.aac">JR-SH6-1</option>
+            <option value="./melody/JR-SH/JR-SH6-2.aac">JR-SH6-2</option>
+            <option value="./melody/JR-SH/JR-SH6-3.aac">JR-SH6-3</option>
+            <option value="./melody/JR-SH/JR-SH7-1.aac">JR-SH7-1</option>
+            <option value="./melody/JR-SH/JR-SH7-2.aac">JR-SH7-2</option>
+            <option value="./melody/JR-SH/JR-SH7-3.aac">JR-SH7-3</option>
+            <option value="./melody/JR-SH/JR-SH8-1.aac">JR-SH8-1</option>
+            <option value="./melody/JR-SH/JR-SH8-2.aac">JR-SH8-2</option>
+            <option value="./melody/JR-SH/JR-SH8-3.aac">JR-SH8-3</option>
+            <option value="./melody/JR-SH/JR-SH9-1.aac">JR-SH9-1</option>
+            <option value="./melody/JR-SH/JR-SH9-2.aac">JR-SH9-2</option>
+            <option value="./melody/JR-SH/JR-SH9-3.aac">JR-SH9-3</option>
         </select>
         <button id="listenMelody">試聴🎶</button>
     </p>
@@ -90,12 +116,15 @@
             <option value="SENSEKI">仙石型</option>
             <option value="TOKAIDO">東海道型</option>
         </select>
-        <button id="listenDoor">試聴🎶</button>
-    </p>
-    <p id="trackNumSelect">
         <select id="trackNum">
             <option value="nonSelected" selected disabled>発着番線</option>
         </select>
+        <button id="listenDoor">試聴🎶</button>
+    </p>
+    <p style="margin-top: 10px;">
+        音量:
+        <input type="range" min="0" max="20" value="20" id="volume">
+        <input type="text" id="volumeValue" value="1.0"></input>
     </p>
     <p id="helpLink">
         <a href="./help.html">遊び方</a>

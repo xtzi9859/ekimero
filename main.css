@@ -116,12 +116,16 @@ button#forceStop {
 }
 /* ドロップダウンリストの幅指定
     ここだけ文字は左揃え*/
-select#doorFile, select#melodyFile {
+select#melodyFile {
     width: 20em;
     text-align: left;
 }
+select#doorFile {
+    width: 10em;
+    text-align: left;
+}
 select#trackNum {
-    width: fit-content;
+    width: 10em;
     text-align: left;
 }
 select > option {
@@ -131,17 +135,17 @@ select > option[disabled]{
     color: khaki;
     font-style: italic;
 }
-/* 番線は戸閉放送と位置連動 謎に揃った */
-p#trackNumSelect {
-    position: relative;
-}
-select#trackNum {
-    position: absolute;
-}
 p#menu {
     font-size: small;
     text-align: left;
     text-decoration: underline;
+}
+/* 音量セレクター */
+#volume {
+    width: 10em;
+}
+#volumeValue {
+    width: 3em;
 }
 /* ヘルプは右揃え */
 p#helpLink {

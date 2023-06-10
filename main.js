@@ -7,6 +7,7 @@ $(function(){
     var door = $('#door').get(0);
     var melody = $('#melody').get(0);
     var repeat = $('#repeat').get(0);
+    var volume = 1.0;
     var doorPlaying = false;
     var doorPath = 'nonSelected';
     var melodyPath = 'nonSelected';
@@ -128,7 +129,7 @@ $(function(){
         melody.play();
         if(doorPath!='no'&&doorPath!='nonSelected'){
             doorPlaying = true;
-            setTimeout(function(){melody.volume = 0.4;}, 2500);
+            setTimeout(function(){melody.volume = (volume * 0.4);}, 2500);
             setTimeout(function(){
                 door.play();
             }, 3000);
@@ -136,7 +137,7 @@ $(function(){
         // 放送が流れていればリピート
         $('#door').on('ended', function(){
             doorPlaying = false;
-            setTimeout(function(){melody.volume = 1.0;}, 500);
+            setTimeout(function(){melody.volume = volume;}, 500);
         });
         $('#melody').on('ended', function(){if(doorPlaying == true){melody.play();};});
     });
@@ -151,7 +152,16 @@ $(function(){
         melody.currentTime = 0;
         door.currentTime = 0;
         repeat.currentTime = 0;
-        melody.volume = 1.0;
+        melody.volume = volume;
         doorPlaying = false;
     });
+    // 音量調節
+    $('#volume').on('input', function(){
+        let slider = $(this).val();
+        volume = slider / 20;
+        $('#volumeValue').val(volume);
+        melody.volume = volume;
+        door.volume = volume;
+        repeat.volume = volume;
+    })
 });
