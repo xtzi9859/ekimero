@@ -6,8 +6,8 @@ $(function(){
     // 初期化
     var door = $('#door').get(0);
     var melody = $('#melody').get(0);
+    var repeat = $('#repeat').get(0);
     var doorPlaying = false;
-    var melodyPlaying = false;
     var doorPath = 'nonSelected';
     var melodyPath = 'nonSelected';
     var doorType = 'nonSelected';
@@ -15,6 +15,7 @@ $(function(){
     $('#melodyFile').change(function(){
         melodyPath = $('#melodyFile').val();
         $('#melody').attr('src', melodyPath);
+        $('#repeat').attr('src', melodyPath)
     });
     // 放送選択,発着番線のリスト切り替え
     $('#doorFile').change(function(){
@@ -110,15 +111,12 @@ $(function(){
     $('#selectJRSH').click(function(){$('#melodyFile').val('JR-SH')})
     // ON/OFF 0.5秒間を置いてリピート
     $('#on').click(function(){
-        melody.play();
-        melodyPlaying = true;
-        $('#melody').on('ended',function(){if(melodyPlaying){setTimeout(function(){melody.play();}, 500);}});
+        repeat.play();
     });
     // 0.5秒後に放送
     $('#off').click(function(){
-        melodyPlaying = false;
-        melody.pause();
-        melody.currentTime = 0;
+        repeat.pause();
+        repeat.currentTime = 0;
         setTimeout(function(){door.play()}, 500);
     });
     // 一回鳴らす
@@ -149,8 +147,10 @@ $(function(){
     $('#forceStop').click(function(){
         melody.pause();
         door.pause();
+        repeat.pause;
         melody.currentTime = 0;
         door.currentTime = 0;
+        repeat.currentTime = 0;
         melody.volume = 1.0;
         doorPlaying = false;
     });

@@ -112,6 +112,7 @@ button#forceStop {
     color: red;
     font-weight: bold;
     font-size: big;
+    font-family: KikaiChokokuJIS;
 }
 /* ドロップダウンリストの幅指定
     ここだけ文字は左揃え*/
