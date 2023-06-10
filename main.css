@@ -68,7 +68,20 @@ p.melbtn {
     transform: scale(0.77,1);
 }
 /* 仙台ボタン */
+div#oneButton {
+    position: relative;
+    background-color: orangered;
+    border: 2px solid #000;
+    border-radius: 20px;
+    margin-bottom: 1em;
+    height: 120px;
+}
 a#playOnce {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%,-50%);
     display: block;
     border-radius: 50%;
     width: 60px;
