@@ -6,10 +6,12 @@ $(function(){
     var sw1 = $('#sw1').get(0);
     var sw2 = $('#sw2').get(0);
     var melodyPath = 'nonSelected';
-    var doorPath = 'nonSelectd';
+    var doorPath = 'nonSelected';
     var doorType = 'nonSelected';
     var volume = 1.0;
-
+    $('#melodyFile').val('nonSelected');
+    $('#doorFile').val('nonSelected');
+    $('#doorType').val('nonSelected');
 
     $('#repeat').on('ended',function(){silent.play();});
     $('#silent').on('ended',function(){repeat.play();});
