@@ -23,9 +23,8 @@ $(function(){
         doorType = $('#doorFile').val();
         switch(doorType) {
             case 'no':
-                doorPath = '';
                 clearTrackSlecter();
-                addTrackSelecter('','なし');
+                doorPath = '#';
                 break;
             case 'UENO_MATSUMOTO':
                 clearTrackSlecter();
@@ -148,7 +147,7 @@ $(function(){
     $('#forceStop').click(function(){
         melody.pause();
         door.pause();
-        repeat.pause;
+        repeat.pause();
         melody.currentTime = 0;
         door.currentTime = 0;
         repeat.currentTime = 0;
@@ -159,7 +158,7 @@ $(function(){
     $('#volume').on('input', function(){
         let slider = $(this).val();
         volume = slider / 20;
-        $('#volumeValue').val(volume * 100);
+        $('#volumeValue').val(slider * 5);
         melody.volume = volume;
         door.volume = volume;
         repeat.volume = volume;
