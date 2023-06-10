@@ -13,6 +13,7 @@ $(function(){
     var doorPath = 'nonSelected';
     var melodyPath = 'nonSelected';
     var doorType = 'nonSelected';
+    var re;
     // メロディー
     $('#melodyFile').change(function(){
         melodyPath = $('#melodyFile').val();
@@ -113,7 +114,7 @@ $(function(){
     $('#on').click(function(){
         sw2.play();
         setTimeout(function(){melody.play();},500);
-        $('#melody').on('ended', function(){const re = setTimeout(function(){melody.play();},500);})});
+        $('#melody').on('ended', function(){re = setTimeout(function(){melody.play();},500);})});
     // 0.5秒後に放送
     $('#off').click(function(){
         sw2.play();
