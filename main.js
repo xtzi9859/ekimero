@@ -159,6 +159,7 @@ $(function(){
         let slider = $(this).val();
         volume = slider / 20;
         melody.volume = volume;
+        repeat.volume = volume;
         door.volume = volume;
         $('#volumeValue').val(slider * 5);
     })
