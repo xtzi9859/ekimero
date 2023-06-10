@@ -1,24 +1,52 @@
 $(function(){
-    // ドロップダウンリスト初期値選択
-    $('#melodyFile').val('nonSelected');
-    $('#doorFile').val('nonSelected');
-    $('#trackNum').val('nonSelected');
-    // 初期化
     var door = $('#door').get(0);
     var melody = $('#melody').get(0);
+    var repeat = $('#repeat').get(0);
+    var silent = $('#silent').get(0);
     var sw1 = $('#sw1').get(0);
     var sw2 = $('#sw2').get(0);
-    var volume = 1.0;
-    var doorPlaying = false;
-    var doorPath = 'nonSelected';
     var melodyPath = 'nonSelected';
+    var doorPath = 'nonSelectd';
     var doorType = 'nonSelected';
-    var re;
-    // メロディー
+    var volume = 1.0;
+
+
+    $('#repeat').on('ended',function(){silent.play();});
+    $('#silent').on('ended',function(){repeat.play();});
+
+    // ON/OFF
+    $('#on').click(function(){
+        sw2.play();
+        setTimeout(function(){repeat.play();}, 500);
+    })
+    $('#off').click(function(){
+        sw2.play();
+        setTimeout(function(){repeat.pause(); repeat.currentTime = 0;}, 500);
+        setTimeout(function(){silent.pause(); silent.currentTime = 0;}, 500);
+        setTimeout(function(){door.play();}, 1200);
+    })
+
+    // メロディーボタン
+    $('#playOnce').click(function(){
+        sw1.play();
+        setTimeout(function(){melody.play();},500);
+        if(doorPath!='no'&&doorPath!='nonSelected'){
+            doorPlaying = true;
+            setTimeout(function(){melody.volume = (volume * 0.4);}, 1500);
+            setTimeout(function(){door.play();}, 2200);
+        }
+        $('#door').on('ended', function(){
+            setTimeout(function(){melody.volume = volume;}, 500);
+        });
+    });
+
+
+    // メロディー選択
     $('#melodyFile').change(function(){
         melodyPath = $('#melodyFile').val();
         $('#melody').attr('src', melodyPath);
-    });
+        $('#repeat').attr('src', melodyPath);
+    })
     // 放送選択,発着番線のリスト切り替え
     $('#doorFile').change(function(){
         doorType = $('#doorFile').val();
@@ -92,74 +120,44 @@ $(function(){
                 break;
         }
     })
-    // 番線リセットの関数
+    $('#trackNum').change(function(){
+        doorPath = $('#trackNum').val();
+        $('#door').attr('src', doorPath);
+    })
+    // 番線リストの関数
     function clearTrackSlecter() {
         let optionCount = $('#trackNum').children('option').length;
         for(let n = 1; n <= optionCount ; n++) {$('#trackNum').children('option:nth-child(1)').remove();}
         $('#trackNum').append('<option value="nonSelected" selected disabled>発着番線</option>');
         $('#trackNum').val('nonSelected');
     }
-    // 番線選択の関数
     function addTrackSelecter(a, b){
         $('#trackNum').append($('<option>').val(a).text(b));
     }
-    // 放送ファイルを再生
-    $('#trackNum').change(function(){
-        doorPath = $('#trackNum').val();
-        $('#door').attr('src', doorPath);
-    })
-    // カテゴリージャンプ
-    $('#selectJRSH').click(function(){$('#melodyFile').val('JR-SH')})
-    // ON/OFF 0.5秒間を置いてリピート
-    $('#on').click(function(){
-        sw2.play();
-        setTimeout(function(){melody.play();},500);
-        $('#melody').on('ended', function(){re = setTimeout(function(){melody.play();},500);})});
-    // 0.5秒後に放送
-    $('#off').click(function(){
-        sw2.play();
-        setTimeout(function(){melody.pause();},500);
-        setTimeout(function(){melody.currentTime = 0;}, 500);
-        setTimeout(function(){door.play();}, 1200);
-        clearTimeout(re);
-    });
-    // 一回鳴らす
-    // 2.5秒後に音量ダウン
-    // 3.0秒後に放送開始
-    // 放送終了後0.5秒で音量戻す
-    $('#playOnce').click(function(){
-        sw1.play();
-        setTimeout(function(){melody.play();},500);
-        if(doorPath!='no'&&doorPath!='nonSelected'){
-            doorPlaying = true;
-            setTimeout(function(){melody.volume = (volume * 0.4);}, 2500);
-            setTimeout(function(){door.play();}, 3000);
-        }
-        // 放送が流れていればリピート
-        $('#door').on('ended', function(){
-            doorPlaying = false;
-            setTimeout(function(){melody.volume = volume;}, 500);
-        });
-        $('#melody').on('ended', function(){if(doorPlaying == true){melody.play();};});
-    });
-    // 試聴ボタン
-    $('#listenMelody').click(function(){melody.play();});
-    $('#listenDoor').click(function(){door.play();});
-    //強制停止 リピートキャンセル
+
+
+    // 強制停止
     $('#forceStop').click(function(){
         melody.pause();
+        repeat.pause();
         door.pause();
+        silent.pause();
         melody.currentTime = 0;
+        repeat.currentTime = 0;
         door.currentTime = 0;
-        melody.volume = volume;
-        doorPlaying = false;
-    });
-    // 音量調節
+        silent.currentTime = 0;
+    })
+
+    // 試聴
+    $('#listenMelody').click(function(){melody.play()});
+    $('#listenDoor').click(function(){door.play()});
+
+    // 音量
     $('#volume').on('input', function(){
         let slider = $(this).val();
         volume = slider / 20;
-        $('#volumeValue').val(slider * 5);
         melody.volume = volume;
         door.volume = volume;
+        $('#volumeValue').val(slider * 5);
     })
-});
+})
