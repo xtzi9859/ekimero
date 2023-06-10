@@ -30,10 +30,9 @@ $(function(){
     $('#playOnce').click(function(){
         sw1.play();
         setTimeout(function(){melody.play();},500);
-        if(doorPath!='no'&&doorPath!='nonSelected'){
-            doorPlaying = true;
-            setTimeout(function(){melody.volume = (volume * 0.4);}, 1500);
-            setTimeout(function(){door.play();}, 2200);
+        if(doorPath!='nonSelected'){
+            setTimeout(function(){melody.volume = (volume * 0.4);}, 2000);
+            setTimeout(function(){door.play();}, 3000);
         }
         $('#door').on('ended', function(){
             setTimeout(function(){melody.volume = volume;}, 500);
@@ -53,7 +52,7 @@ $(function(){
         switch(doorType) {
             case 'no':
                 clearTrackSlecter();
-                doorPath = '#';
+                doorPath = 'nonSelected';
                 break;
             case 'UENO_MATSUMOTO':
                 clearTrackSlecter();
@@ -146,6 +145,7 @@ $(function(){
         repeat.currentTime = 0;
         door.currentTime = 0;
         silent.currentTime = 0;
+        melody.volume = volume;
     })
 
     // 試聴
