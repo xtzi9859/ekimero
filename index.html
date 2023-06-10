@@ -15,7 +15,6 @@
 
 <body>
     <p id="menu"><a href="/index.html">TOP</a> &gt;&gt; 発車メロディー</p>
-    <h1>発車メロディー</h1>
     <audio id="melody" src=""></audio>
     <audio id="door" src=""></audio>
     <div id="flex">
@@ -31,12 +30,13 @@
         </div>
         <div id="right">
             <div id="oneButton">
+                <p id="buttonPlate">発車メロディ</p>
                 <a id="playOnce"></a>
             </div>
-            <button id="forceStop">強制停止</button>
         </div>
     </div>
-    <p><button id="selectJRSH">JR-SH</button></p>
+    <p>    <button id="forceStop">強制停止</button></p>
+        <button id="selectJRSH">JR-SH</button>
     <p>
         <select id="melodyFile">
             <option value="nonSelected" selected disabled>発車メロディーを選択</option>
