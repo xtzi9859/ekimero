@@ -161,6 +161,8 @@ $(function(){
         melody.volume = volume;
         repeat.volume = volume;
         door.volume = volume;
+        sw1.volume = volume;
+        sw2.volume = volume;
         $('#volumeValue').val(slider * 5);
     })
 })
