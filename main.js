@@ -9,9 +9,11 @@ $(function(){
     var doorPath = 'nonSelected';
     var doorType = 'nonSelected';
     var volume = 1.0;
+    $('#volume').val(20);
     $('#melodyFile').val('nonSelected');
     $('#doorFile').val('nonSelected');
     $('#doorType').val('nonSelected');
+    $('#volumeValue').val(100);
 
     $('#repeat').on('ended',function(){silent.play();});
     $('#silent').on('ended',function(){repeat.play();});
