@@ -75,6 +75,16 @@ $(function(){
                 addTrackSelecter('./door/atos/normal/4.aac','4番線');
                 addTrackSelecter('./door/atos/normal/5.aac','5番線');
                 addTrackSelecter('./door/atos/normal/6.aac','6番線');
+                addTrackSelecter('./door/atos/normal/7.aac','7番線');
+                addTrackSelecter('./door/atos/normal/8.aac','8番線');
+                addTrackSelecter('./door/atos/normal/9.aac','9番線');
+                addTrackSelecter('./door/atos/normal/10.aac','10番線');
+                addTrackSelecter('./door/atos/normal/11.aac','11番線');
+                addTrackSelecter('./door/atos/normal/12.aac','12番線');
+                addTrackSelecter('./door/atos/normal/13.aac','13番線');
+                addTrackSelecter('./door/atos/normal/14.aac','14番線');
+                addTrackSelecter('./door/atos/normal/15.aac','15番線');
+                addTrackSelecter('./door/atos/normal/16.aac','16番線');
                 break;
             case 'ATOS_line':
                 clearTrackSlecter();
