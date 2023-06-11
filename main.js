@@ -123,8 +123,8 @@ $(function(){
                 break;
             case 'IWANE':
                 clearTrackSlecter();
-                addTrackSelecter('./door/厳根・館山型 女声.aac','女声');
-                addTrackSelecter('./door/厳根・館山型 男声.aac','男声');
+                addTrackSelecter('./door/巌根・館山型 女声.aac','女声');
+                addTrackSelecter('./door/巌根・館山型 男声.aac','男声');
         }
     })
     $('#trackNum').change(function(){
