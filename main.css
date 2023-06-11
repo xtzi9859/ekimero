@@ -138,7 +138,6 @@ select > option[disabled]{
 p#menu {
     font-size: small;
     text-align: left;
-    text-decoration: underline;
 }
 /* 音量セレクター */
 #volume {
