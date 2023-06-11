@@ -68,6 +68,7 @@ $(function(){
                 break;
             case 'ATOS':
                 clearTrackSlecter();
+                addTrackSelecter('./door/atos/kaiso.aac','回送')
                 addTrackSelecter('./door/atos/normal/1.aac','1番線');
                 addTrackSelecter('./door/atos/normal/2.aac','2番線');
                 addTrackSelecter('./door/atos/normal/3.aac','3番線');
