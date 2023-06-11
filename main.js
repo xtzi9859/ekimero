@@ -56,7 +56,6 @@ $(function(){
         switch(doorType) {
             case 'no':
                 clearTrackSlecter();
-                doorPath = 'nonSelected';
                 break;
             case 'UENO_MATSUMOTO':
                 clearTrackSlecter();
@@ -147,6 +146,7 @@ $(function(){
         for(let n = 1; n <= optionCount ; n++) {$('#trackNum').children('option:nth-child(1)').remove();}
         $('#trackNum').append('<option value="nonSelected" selected disabled>発着番線</option>');
         $('#trackNum').val('nonSelected');
+        $('#door').attr('src', 'no');
     }
     function addTrackSelecter(a, b){
         $('#trackNum').append($('<option>').val(a).text(b));
