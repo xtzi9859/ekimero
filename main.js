@@ -39,11 +39,11 @@ $(function(){
         rp = 0;
         setTimeout(function(){melody.play();},500);
         if(doorPath!='nonSelected'&&doorPath!='no'){
-            doorPlaying = true;
             setTimeout(function(){melody.volume = (volume * 0.4);}, 5000);
             setTimeout(function(){$('#volumeValue').val('❌');}, 5000);
             setTimeout(function(){$('#volume').prop('disabled', true);}, 5000);
             setTimeout(function(){door.play();}, 5500);
+            setTimeout(function(){doorPlaying = true;}, 5500);
         }
         $('#melody').on('ended', function(){
             if(rp < 1 && doorPlaying == true){
@@ -165,6 +165,8 @@ $(function(){
         $('#trackNum').append('<option value="nonSelected" selected disabled>発着番線</option>');
         $('#trackNum').val('nonSelected');
         $('#door').attr('src', 'no');
+        doorType = 'nonSelected';
+        doorPath = 'nonSelected';
     }
     function addTrackSelecter(a, b){
         $('#trackNum').append($('<option>').val(a).text(b));
@@ -184,6 +186,9 @@ $(function(){
         melody.volume = volume;
         repeat.volume = volume;
         door.volume = volume;
+        doorPlaying = false;
+        $('#volume').prop('disabled', false);
+        $('#volumeValue').val(volume * 100);
     })
 
     // 試聴
