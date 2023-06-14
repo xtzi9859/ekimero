@@ -8,15 +8,17 @@ $(function(){
     var melodyPath = 'nonSelected';
     var doorPath = 'nonSelected';
     var doorType = 'nonSelected';
+    var doorPlaying = false;
     var volume = 1.0;
+    var rp = 0;
     $('#volume').val(20);
     $('#volumeValue').val(100);
     $('#melodyFile').val('nonSelected');
     $('#doorFile').val('nonSelected');
     $('#trackNum').val('nonSelected');
 
-    $('#repeat').on('ended',function(){silent.play();});
-    $('#silent').on('ended',function(){repeat.play();});
+    $('#repeat').on('ended', function(){silent.play();});
+    $('#silent').on('ended', function(){repeat.play();});
 
     // ON/OFF
     $('#on').click(function(){
@@ -31,15 +33,29 @@ $(function(){
     })
 
     // メロディーボタン
+    // メロディーは放送が鳴っている間に限って1回だけリピート可
     $('#playOnce').click(function(){
         sw1.play();
+        rp = 0;
         setTimeout(function(){melody.play();},500);
-        if(doorPath!='nonSelected'){
-            setTimeout(function(){melody.volume = (volume * 0.4);}, 2000);
-            setTimeout(function(){door.play();}, 3000);
+        if(doorPath!='nonSelected'&&doorPath!='no'){
+            doorPlaying = true;
+            setTimeout(function(){melody.volume = (volume * 0.4);}, 5000);
+            setTimeout(function(){$('#volumeValue').val('❌');}, 5000);
+            setTimeout(function(){$('#volume').prop('disabled', true);}, 5000);
+            setTimeout(function(){door.play();}, 5500);
         }
+        $('#melody').on('ended', function(){
+            if(rp < 1 && doorPlaying == true){
+                melody.play();
+            }
+            rp = 1;
+        });
         $('#door').on('ended', function(){
+            doorPlaying = false;
             setTimeout(function(){melody.volume = volume;}, 500);
+            setTimeout(function(){$('#volumeValue').val(volume * 100);}, 500);
+            setTimeout(function(){$('#volume').prop('disabled', false);}, 500);
         });
     });
 
@@ -135,6 +151,7 @@ $(function(){
                 clearTrackSlecter();
                 addTrackSelecter('./door/巌根・館山型 女声.aac','女声');
                 addTrackSelecter('./door/巌根・館山型 男声.aac','男声');
+                break;
         }
     })
     $('#trackNum').change(function(){
@@ -165,6 +182,8 @@ $(function(){
         door.currentTime = 0;
         silent.currentTime = 0;
         melody.volume = volume;
+        repeat.volume = volume;
+        door.volume = volume;
     })
 
     // 試聴
