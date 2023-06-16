@@ -11,6 +11,12 @@ $(function(){
     var doorPlaying = false;
     var volume = 1.0;
     var rp = 0;
+    var timeout1;
+    var timeout2;
+    var timeout3;
+    var timeout4;
+    var timeout5;
+    var melodyTimeout;
     $('#volume').val(20);
     $('#volumeValue').val(100);
     $('#melodyFile').val('nonSelected');
@@ -23,7 +29,7 @@ $(function(){
     // ON/OFF
     $('#on').click(function(){
         sw2.play();
-        setTimeout(function(){repeat.play();}, 500);
+        melodyTimeout = setTimeout(function(){repeat.play();}, 500);
     })
     $('#off').click(function(){
         sw2.play();
@@ -39,11 +45,11 @@ $(function(){
         rp = 0;
         setTimeout(function(){melody.play();},500);
         if(doorPath!='nonSelected'&&doorPath!='no'){
-            setTimeout(function(){melody.volume = (volume * 0.4);}, 5000);
-            setTimeout(function(){$('#volumeValue').val('❌');}, 5000);
-            setTimeout(function(){$('#volume').prop('disabled', true);}, 5000);
-            setTimeout(function(){door.play();}, 5500);
-            setTimeout(function(){doorPlaying = true;}, 5500);
+            timeout1 = setTimeout(function(){melody.volume = (volume * 0.4);}, 5000);
+            timeout2 = setTimeout(function(){$('#volumeValue').val('❌');}, 5000);
+            timeout3 = setTimeout(function(){$('#volume').prop('disabled', true);}, 5000);
+            timeout4 = setTimeout(function(){door.play();}, 5500);
+            timeout5 = setTimeout(function(){doorPlaying = true;}, 5500);
         }
         $('#melody').on('ended', function(){
             if(rp < 1 && doorPlaying == true){
@@ -189,6 +195,12 @@ $(function(){
         doorPlaying = false;
         $('#volume').prop('disabled', false);
         $('#volumeValue').val(volume * 100);
+        clearTimeout(timeout1);
+        clearTimeout(timeout2);
+        clearTimeout(timeout3);
+        clearTimeout(timeout4);
+        clearTimeout(timeout5);
+        clearTimeout(melodyTimeout);
     })
 
     // 試聴
