@@ -88,27 +88,34 @@ $(function(){
                 addTrackSelecter('./door/matsumoto/5.aac','5番線');
                 addTrackSelecter('./door/matsumoto/6.aac','6番線');
                 break;
-            case 'ATOS':
+            case 'ATOS_sakiyama':
                 clearTrackSlecter();
                 addTrackSelecter('./door/atos/kaiso.aac','回送')
-                addTrackSelecter('./door/atos/normal/1.aac','1番線');
-                addTrackSelecter('./door/atos/normal/2.aac','2番線');
-                addTrackSelecter('./door/atos/normal/3.aac','3番線');
-                addTrackSelecter('./door/atos/normal/4.aac','4番線');
-                addTrackSelecter('./door/atos/normal/5.aac','5番線');
-                addTrackSelecter('./door/atos/normal/6.aac','6番線');
-                addTrackSelecter('./door/atos/normal/7.aac','7番線');
-                addTrackSelecter('./door/atos/normal/8.aac','8番線');
-                addTrackSelecter('./door/atos/normal/9.aac','9番線');
-                addTrackSelecter('./door/atos/normal/10.aac','10番線');
-                addTrackSelecter('./door/atos/normal/11.aac','11番線');
-                addTrackSelecter('./door/atos/normal/12.aac','12番線');
-                addTrackSelecter('./door/atos/normal/13.aac','13番線');
-                addTrackSelecter('./door/atos/normal/14.aac','14番線');
-                addTrackSelecter('./door/atos/normal/15.aac','15番線');
-                addTrackSelecter('./door/atos/normal/16.aac','16番線');
+                addTrackSelecter('./door/atos/sakiyama/1.aac','1番線');
+                addTrackSelecter('./door/atos/sakiyama/2.aac','2番線');
+                addTrackSelecter('./door/atos/sakiyama/3.aac','3番線');
+                addTrackSelecter('./door/atos/sakiyama/4.aac','4番線');
+                addTrackSelecter('./door/atos/sakiyama/5.aac','5番線');
+                addTrackSelecter('./door/atos/sakiyama/6.aac','6番線');
+                addTrackSelecter('./door/atos/sakiyama/7.aac','7番線');
+                addTrackSelecter('./door/atos/sakiyama/8.aac','8番線');
+                addTrackSelecter('./door/atos/sakiyama/9.aac','9番線');
+                addTrackSelecter('./door/atos/sakiyama/10.aac','10番線');
+                addTrackSelecter('./door/atos/sakiyama/11.aac','11番線');
+                addTrackSelecter('./door/atos/sakiyama/12.aac','12番線');
+                addTrackSelecter('./door/atos/sakiyama/13.aac','13番線');
+                addTrackSelecter('./door/atos/sakiyama/14.aac','14番線');
+                addTrackSelecter('./door/atos/sakiyama/15.aac','15番線');
+                addTrackSelecter('./door/atos/sakiyama/16.aac','16番線');
                 break;
-            case 'ATOS_line':
+            case 'ATOS_tanaka':
+                clearTrackSlecter();
+                addTrackSelecter('./door/atos/tanaka/1.aac','1番線');
+                addTrackSelecter('./door/atos/tanaka/2.aac','2番線');
+                addTrackSelecter('./door/atos/tanaka/3.aac','3番線');
+                addTrackSelecter('./door/atos/tanaka/4.aac','4番線');
+                break;
+            case 'ATOS_lineF':
                 clearTrackSlecter();
                 $('#trackNum').append('<option value="yamanoteLine" disabled>山手線</option>');
                 addTrackSelecter('./door/atos/yamanote/0.aac','山手線 番線なし');
@@ -145,18 +152,18 @@ $(function(){
                 break;
             case 'SENSEKI':
                 clearTrackSlecter();
-                addTrackSelecter('./door/仙石型 女声.aac','女声');
-                addTrackSelecter('./door/仙石型 男声.aac','男声');
+                addTrackSelecter('./door/sensekiF.aac','女声');
+                addTrackSelecter('./door/sensekiM.aac','男声');
                 break;
             case 'TOKAIDO':
                 clearTrackSlecter();
-                addTrackSelecter('./door/東海道型 女声.aac','女声');
-                addTrackSelecter('./door/東海道型 男声.aac','男声');
+                addTrackSelecter('./door/tokaidoF.aac','女声');
+                addTrackSelecter('./door/tokaidoM.aac','男声');
                 break;
             case 'IWANE':
                 clearTrackSlecter();
-                addTrackSelecter('./door/巌根・館山型 女声.aac','女声');
-                addTrackSelecter('./door/巌根・館山型 男声.aac','男声');
+                addTrackSelecter('./door/iwaneF.aac','女声');
+                addTrackSelecter('./door/iwaneM.aac','男声');
                 break;
         }
     })
