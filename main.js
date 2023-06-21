@@ -63,8 +63,6 @@ $(function(){
             setTimeout(function(){$('#volume').prop('disabled', false);}, 500);
         });
     });
-
-
     // メロディー選択
     $('#melodyFile').change(function(){
         melodyPath = $('#melodyFile').val();
@@ -77,18 +75,22 @@ $(function(){
         switch(category) {
             case 'all':
                 $('.opt_hide').contents().unwrap();
+                $('#melodyFile').val('nonSelected');
             break;
             case 'shinkansen':
                 $('.opt_hide').contents().unwrap();
                 $('#melodyFile > :not(#shinkansen) > option').wrap('<span class="opt_hide"></span>');
+                $('#melodyFile').val('nonSelected');
             break;
             case 'WaterCrown':
                 $('.opt_hide').contents().unwrap();
                 $('#melodyFile > :not(#WaterCrown) > option').wrap('<span class="opt_hide"></span>');
+                $('#melodyFile').val('nonSelected');
             break;
             case 'JRSH':
                 $('.opt_hide').contents().unwrap();
                 $('#melodyFile > :not(#JRSH) > option').wrap('<span class="opt_hide"></span>');
+                $('#melodyFile').val('nonSelected');
             break;
         }
     });
