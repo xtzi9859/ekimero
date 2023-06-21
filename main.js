@@ -37,7 +37,6 @@ $(function(){
         setTimeout(function(){silent.pause(); silent.currentTime = 0;}, 500);
         setTimeout(function(){door.play();}, 1200);
     })
-
     // メロディーボタン
     // メロディーは放送が鳴っている間に限って1回だけリピート可
     $('#playOnce').click(function(){
@@ -72,6 +71,27 @@ $(function(){
         $('#melody').attr('src', melodyPath);
         $('#repeat').attr('src', melodyPath);
     })
+    // カテゴリー
+    $('#melodyCategory').change(function(){
+        category = $('#melodyCategory').val();
+        switch(category) {
+            case 'all':
+                $('.opt_hide').contents().unwrap();
+            break;
+            case 'shinkansen':
+                $('.opt_hide').contents().unwrap();
+                $('#melodyFile > :not(#shinkansen) > option').wrap('<span class="opt_hide"></span>');
+            break;
+            case 'WaterCrown':
+                $('.opt_hide').contents().unwrap();
+                $('#melodyFile > :not(#WaterCrown) > option').wrap('<span class="opt_hide"></span>');
+            break;
+            case 'JRSH':
+                $('.opt_hide').contents().unwrap();
+                $('#melodyFile > :not(#JRSH) > option').wrap('<span class="opt_hide"></span>');
+            break;
+        }
+    });
     // 放送選択,発着番線のリスト切り替え
     $('#doorFile').change(function(){
         doorType = $('#doorFile').val();
@@ -114,6 +134,21 @@ $(function(){
                 addTrackSelecter('./door/atos/tanaka/2.aac','2番線');
                 addTrackSelecter('./door/atos/tanaka/3.aac','3番線');
                 addTrackSelecter('./door/atos/tanaka/4.aac','4番線');
+                break;
+            case 'ATOS_tsuda':
+                clearTrackSlecter();
+                addTrackSelecter('./door/atos/tsuda/1.aac','1番線');
+                addTrackSelecter('./door/atos/tsuda/2.aac','2番線');
+                addTrackSelecter('./door/atos/tsuda/3.aac','3番線');
+                addTrackSelecter('./door/atos/tsuda/4.aac','4番線');
+                addTrackSelecter('./door/atos/tsuda/5.aac','5番線');
+                addTrackSelecter('./door/atos/tsuda/6.aac','6番線');
+                addTrackSelecter('./door/atos/tsuda/7.aac','7番線');
+                addTrackSelecter('./door/atos/tsuda/8.aac','8番線');
+                addTrackSelecter('./door/atos/tsuda/9.aac','9番線');
+                addTrackSelecter('./door/atos/tsuda/10.aac','10番線');
+                addTrackSelecter('./door/atos/tsuda/11.aac','11番線');
+                addTrackSelecter('./door/atos/tsuda/12.aac','12番線');
                 break;
             case 'ATOS_lineF':
                 clearTrackSlecter();
@@ -184,7 +219,6 @@ $(function(){
     function addTrackSelecter(a, b){
         $('#trackNum').append($('<option>').val(a).text(b));
     }
-
 
     // 強制停止
     $('#forceStop').click(function(){

@@ -13,18 +13,14 @@ html {
     background-color: darkslategray;
 }
 body {
-    margin: 0 25%;
+    max-width: 750px;
+    margin: 0 auto;
     border: 5px solid gray;
 }
 h1 {
     font-size:xx-large;
     font-weight: bold;
     color: orange;
-}
-@media screen and (max-width: 500px){
-    body{
-        margin: 0px;
-    }
 }
 /* divを横に並べる */
 div#flex {
@@ -116,24 +112,29 @@ button#forceStop {
 }
 /* ドロップダウンリストの幅指定
     ここだけ文字は左揃え*/
-select#melodyFile {
-    width: 20em;
+select{
     text-align: left;
+}
+select#melodyCategory{
+    width: 7em;
+}
+select#melodyFile {
+    width: 15em;
 }
 select#doorFile {
-    width: 10em;
-    text-align: left;
+    width: 7em;
 }
 select#trackNum {
-    width: 10em;
-    text-align: left;
+    width: 15em;
 }
-select > option {
+option {
     text-align: left;
+    font-style: normal;
 }
-select > option[disabled]{
+option[disabled], optgroup{
     color: khaki;
     font-style: italic;
+    text-align: left;
 }
 p#menu {
     font-size: small;
@@ -150,4 +151,9 @@ p#menu {
 p#helpLink {
     text-align: right;
     margin: 1em 5px;
+}
+
+/* メニュー項目非表示用クラス */
+.opt_hide{
+    display: none;
 }
